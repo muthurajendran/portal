@@ -1,0 +1,20 @@
+/*
+	Coin Slider jQuery plugin CSS styles
+	http://workshop.rs/projects/coin-slider
+*/
+
+
+#slidecoin { overflow: hidden; zoom: 1; position: absolute; bottom:20px; }
+/*#slidecoin a{ text-decoration: none; outline: none; border: none; }*/
+
+.cs-buttons { padding: 10px 0; float: left; }
+.cs-buttons a { margin-right: 5px; height: 18px; width: 18px; float: left; background:url(../images/nav-button.png) no-repeat 50% 50%; text-indent: -1000px; }
+
+.cs-active { background:url(../images/nav-active.png) no-repeat 50% 50% !important;  }
+
+.cs-title { width: 545px; padding: 10px; background-color: #000000; color: #FFFFFF; }
+
+.cs-prev {background:url(../images/nav-left.png) no-repeat; width:79px; height:76px; text-indent:-9999px;}
+.cs-next {background:url(../images/nav-right.png) no-repeat; width:79px; height:76px; text-indent:-9999px;}
+.cs-prev:hover {background:url(../images/nav-lefthover.png) no-repeat; }
+.cs-next:hover {background:url(../images/nav-righthover.png) no-repeat; }

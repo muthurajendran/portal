@@ -1,0 +1,110 @@
+<% title "Admin Page" %>
+<% if permitted_to? :home_admin,@user=User.new %>
+<!-- end main content area -->
+
+<!-- begin sidebar -->
+
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_8 alpha">
+        	<h4><u>Search</u></h4>
+        	
+      <% if !flash[:notice].blank? %>
+	  <div>
+		<%= flash[:notice] %>
+		</div>
+	  <% end %>
+      <div>
+	<%= form_tag({:controller=>'placement_searches',:action => 'query'}) do %>
+      </div>
+
+<table border = "1">
+	<tr>
+		<th><%= label_tag "Select a Search Type"%></th>
+		<td><%= select_tag "query_options",options_for_select(["Search by Name,USN and Branch","Search by Branch and other details","Search by company name and other details","Search by Registration Details"]) %></td>
+	</tr>
+</table><br/>
+
+	<div class = "actions" >
+  		<p align = "right"><%= submit_tag("GO", :class => "button medium radius5") %></p>
+  	</div>
+<%end%>
+
+</div>
+</div>
+<div class="whitespace clear"></div>
+
+	<div class="container_12">
+        <!-- begin index list widget -->
+        <div class="grid_4 alpha">
+            <h4><u>BE Students</u></h4>
+           <ul class="checklist7">
+	            
+               <li><%= link_to("Show Branches", {:controller => 'branches',:action => 'index'}) %></li><br/>
+                        
+			   <li><%= link_to("Show BE Students", {:controller => 'students',:action => 'index'}) %></li><br/> 
+			   <li><%= link_to("Show Companies",{:controller => 'companies',:action => 'index'}) %></li><br/> 
+			   <li><%= link_to("Show BE Student Registrations",{:controller => 'admin',:action => 'students_registrations'}) %></li><br/>
+            </ul>               
+        </div>
+		<div class="grid_4 alpha">
+	         <h4><u>Mtech Students</u></h4>
+	        <ul class="checklist7">
+
+	            <li><%= link_to("Show pgBranches", {:controller => 'pg_branches',:action => 'index'}) %></li><br/> 
+			    <li><%= link_to("Show Mtech Students", {:controller => 'mtech_students',:action => 'index'}) %></li><br/> 
+				<li><%= link_to("Show PG Companies",{:controller => 'pg_companies',:action => 'index'}) %></li><br/> 
+				<li><%= link_to("Show Mtech Student Registrations",{:controller => 'admin',:action => 'mtech_students_registrations'})%> </li><br/>
+	                   
+	         </ul>               
+	    </div>
+	     <div class="grid_4 alpha">
+	          <h4><u>MCA Students</u></h4>
+	         <ul class="checklist7">
+
+	           <li><%= link_to("Show pgBranches", {:controller => 'pg_branches',:action => 'index'}) %></li><br/> 
+			   <li><%= link_to("Show Mca Students", {:controller => 'mca_students',:action => 'index'}) %></li><br/>
+			   <li><%= link_to("Show PG Companies",{:controller => 'pg_companies',:action => 'index'}) %></li><br/> 
+			   <li><%= link_to("Show Mca Student Registrations",{:controller => 'admin',:action => 'mca_students_registrations'}) %></li><br/>
+			</ul>               
+	        </div>
+</div>
+<div class="whitespace clear"></div> 
+
+	<div class="container_12">
+        <!-- begin index list widget -->
+       
+		<div class="grid_4 alpha">
+	         <h4><u>News Board</u></h4>
+	        <ul class="checklist7">
+				<li><%= link_to("Show Dashboard", {:controller => 'dashboards',:action => 'index'}) %></li><br/>
+				<li><%= link_to("Show Notice", {:controller => 'notices',:action => 'index'}) %></li><br/>
+
+	        </ul>               
+	    </div>
+	     <div class="grid_4 alpha">
+	          <h4><u>Events</u></h4>
+	         <ul class="checklist7">
+				 <li>	<%= link_to("Show Events",{:controller=>'events',:action  => 'index'}) %> </li> <br/>
+				 <li>	<%= link_to("Show Guests",{:controller=>'events',:action  => 'index'}) %> </li> <br/>
+				 <li>	<%= link_to("Show Volunteers",{:controller=>'volunteers',:action  => 'index'}) %> </li> <br/>
+
+
+	          </ul>               
+	        </div>
+</div>
+     
+</div>
+</div>
+<% else %>
+   <h2> you are not allowed to access this page </h2>
+   <%= link_to("Back to home page",{:controller=>'home',:action  => 'index'}) %>
+<% end %>
+
+
+
+
+
+
+
+

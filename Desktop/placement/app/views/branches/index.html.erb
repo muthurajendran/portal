@@ -1,0 +1,37 @@
+<% title "Branch List" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h1 class="content_title">Branch Details:</h1>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>   
+
+<div>
+
+<p align = "right"><%= link_to("Add new Branch", {:action=>'new'}) %></p>
+  
+  <table border='border'>
+    <tr>
+     
+      <th>Branch Name</th>
+      <th>Actions</th>
+    </tr>
+    
+    <% @branches.each do |branch| %>
+    <tr>
+	
+     <td><%= branch.branch_name %></td>
+      <td>
+        <%= link_to("Show", {:action => 'show', :id => branch.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action=>'edit' ,:id=> branch.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action=>'delete', :id=> branch.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+</div>

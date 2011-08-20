@@ -1,0 +1,53 @@
+<% title "Guest Details" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h1 class="content_title">Guests Details</h1>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>   
+
+<div>
+
+<p align = "right"><%= link_to("Add new Guest", {:action=>'new'}) %></p>
+  
+  <table border='border'>
+    <tr>
+     
+      <th>Guest Name</th>
+      <th>Event Name</th>
+      <th>Contact Number</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Details</th>
+      <th>Actions</th>
+    </tr>
+    
+    <% @guests.each do |guest| %>
+    <tr>
+	
+    <td><%= guest.guest_name %></td>
+    <td>
+     <% guest.events.each do |event| %>
+     <%= event.event_name %> <%end%>
+    </td>
+    <td><%= guest.guest_mob %></td>
+   	<td><%= guest.guest_email %></td>
+   	<td><%= guest.guest_role%></td>
+	<td><%= guest.guest_details%></td>
+   
+	
+
+      <td>
+        <%= link_to("Show", {:action => 'show', :id => guest.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action=>'edit' ,:id=> guest.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action=>'delete', :id=> guest.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+</div>

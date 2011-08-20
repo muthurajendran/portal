@@ -1,0 +1,59 @@
+<% title "Change Password" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">Change Password</h3>
+<div>
+	<% if !flash[:notice].blank? %>
+	<div>
+		<p align = "center"><%= flash[:notice] %></p>
+	</div>
+	<% end %>
+<%= form_for(@user) do |f| %>
+</div>
+<div>
+  <% if @user.errors.any? %>
+    <div id="error">
+      <h4 class="content_title"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul><br/><br/>
+    </div>
+  <% end %>
+</div>
+  <% if permitted_to? :change, @user %>
+<div>  
+  <table border = "1">
+  	<tr> 
+    	<th><%= f.label :username %></th>
+    	<td><%= f.text_field :username %></td>
+  	</tr>
+  </table>
+</div>
+  <%end%>
+<div>
+  <table border = "1">
+	<tr>
+    	<th><%= f.label :current_password %></th>
+    	<td><%= f.password_field :old_password %></td><br/>
+  	</tr>
+	<tr>
+    	<th><%= f.label :new_password %></th>
+    	<td><%= f.password_field :password %></td><br/>
+  	</tr>
+  	<tr>
+    	<th><%= f.label :password_confirmation %></th>
+	    <td><%= f.password_field :password_confirmation %></td>
+	 </tr>
+	</table><br/>
+</div>
+	 <div><br/>
+      	<p align = "right"><%= submit_tag("Update", :class => "button medium radius5") %></p>
+      	
+    </div>
+<%end%>
+</div>
+</div>

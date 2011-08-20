@@ -1,0 +1,123 @@
+<% title "#{@pg_company.cmp_name }" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title"><%= @pg_company.cmp_name %></h3>
+
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %> 
+<div>
+<table border="1">
+<tr>
+  <th>Cmp name:</th>
+     <td><%= @pg_company.cmp_name %></td>
+</tr>
+
+<tr>
+  <th>Date of Birth</th>
+  <% if @pg_company.dob.to_s == '1910-01-01' %>
+       <td>Not Applicable</td>
+     <%else%>
+     <td><%= @pg_company.dob %></td>
+      <%end%>
+</tr>
+<tr>
+  <th>Sslc:</th>
+     <td><%= @pg_company.sslc %></td>
+</tr>
+
+<tr>
+  <th>Puc:</th>
+     <td><%= @pg_company.puc %></td>
+</tr>
+<tr>
+  <th>Diploma</th>
+     <td><%= @pg_company.diploma %></td>
+</tr>
+<tr>
+  <th>BE percentage</th>
+     <td><%= @pg_company.mtech_be_per %></td>
+</tr>
+<tr>
+  <th>BE Cgpa:</th>
+     <td><%= @pg_company.mtech_be_cgpa %></td>
+</tr>
+<tr>
+  <th>Maximum Backlogs Allowed:</th>
+     <td><%= @pg_company.backlogs %></td>
+</tr>
+
+<tr>
+  <th>Maximum Gap in Education:</th>
+  <% if @pg_company.gap_in_edu == -1 %>
+  	<td>Not Applicable</td>
+  <%else%>
+     <td><%= @pg_company.gap_in_edu%></td>
+  <%end%>
+</tr>
+<tr>
+  <th>Cgpa:</th>
+     <td><%= @pg_company.mtech_cgpa %></td>
+</tr>
+
+<tr>
+  <th>Registration date:</th>
+  <td><%= @pg_company.reg_date %></td>
+    
+</tr>
+
+<tr>
+  <th>Preplacement talk:</th>
+  <% if @pg_company.preplacement_talk.to_s == '1910-01-01' %>
+       <td>Not Decided</td>
+     <%else%>
+     <td><%= @pg_company.preplacement_talk %></td>
+      <%end%>
+     
+</tr>
+
+<tr>
+  <th>Test Date:</th>
+     <% if @pg_company.test_date.to_s == '1910-01-01' %>
+       <td>Not Decided</td>
+     <%else%>
+     <td><%= @pg_company.test_date %></td>
+      <%end%>
+</tr>
+
+<tr>
+  <th>Interview date:</th>
+       <% if @pg_company.interview_date.to_s == '1910-01-01' %>
+       <td>Not Decided</td>
+     <%else%>
+     <td><%= @pg_company.interview_date %></td>
+      <%end%>
+</tr>
+
+<tr>
+  <th>Salary</th>
+     <td><%= @pg_company.salary %></td>
+</tr>
+
+<tr>
+  <th>pg_company Type:</th>
+      <td><%= @pg_company.pg_company_type %></td>
+</tr>
+
+<tr>
+  <th>Extra Requirements:</th>
+  <td><%= @pg_company.extra_req %></td>
+</tr>
+
+<tr>
+  <th>Miscellaneous:</th>
+  <td><%= @pg_company.misc %></td>
+</tr>
+</table>
+</div>
+<p align = "right"><%= link_to 'Back',{:action=> 'index'} %>
+</div>
+</div>

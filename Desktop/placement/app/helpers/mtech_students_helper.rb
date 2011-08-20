@@ -1,0 +1,2 @@
+module MtechStudentsHelper
+end

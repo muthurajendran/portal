@@ -1,0 +1,2 @@
+module AdminNewsQueuesHelper
+end

@@ -1,0 +1,52 @@
+<% title "Company_Branch" %>
+
+<h3 >
+<% if @branch_companies.nil? || @branch_companies.blank? %>
+	<p align = "center" >No Companies Coming For <%= @branch.branch_name %> yet.</p>
+<% else %>
+	<% @branch_companies.each do |company| %>
+		<h3 "right"><p align = "left"><%= company.cmp_name %></p></h3><hr/>
+		<%if company.reg_date >= Date.today + 2%>
+			<p align = "left">Registration Date: <%= company.reg_date %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%elsif company.reg_date.to_s == '1980-01-01'%>
+			Registration Date: Not Decided&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%end%>
+		
+		<%if company.preplacement_talk >= Date.today + 2 %>
+			PrePlacement Talk: <%= company.preplacement_talk %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%elsif company.preplacement_talk.to_s == '1980-01-01'%>
+			PrePlacement Talk: Not Decided&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%end%>
+		
+		<%if company.test_date >= Date.today + 2%>
+			Test Date: <%= company.test_date %>
+		<%elsif company.test_date.to_s == '1980-01-01'%>
+			Test Date: Not Decided&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</p>
+		<%end%>
+		<div>
+			<table border ="1">
+				<tr>
+					<th>Mimimum Sslc</th>
+					<th>Mimimum Puc</th>
+					<th>Mimimum Diploma</th>
+					<th>Maximum Active Backlogs Allowed</th>
+					<th>Mimimum Cgpa</th>
+					<th>Salary(P.A)</th>
+					<th>Company Type</th>
+				</tr>
+				<tr>
+					<td><%=company.sslc%></td>
+					<td><%=company.puc%></td>
+					<td><%=company.diploma%>%</td>
+					<td><%=company.backlogs%></td>
+					<td><%=company.cgpa%></td>
+					<td><%=company.salary%></td>
+					<td><%=company.company_type%></td>
+				</tr>
+			</table><br/>
+		</div>
+						
+	<%end%>
+<%end%>
+			

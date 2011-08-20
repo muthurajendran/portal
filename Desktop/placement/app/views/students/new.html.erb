@@ -1,0 +1,43 @@
+<% title "New B.E Student" %>
+<% if @branch!=[] %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">BE Student Registration</h3>
+        	
+       <div>
+	<p align = "left"><a class="tipfade"  original-title = "Required"> *</a></th>&nbsp;&nbsp;Required</p>
+	<p align = "left"><a class="tipfade"  original-title = "Optional"> **</a></th>&nbsp;&nbsp;Leave blank if not applicable</p>
+     	
+</div> 
+
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>
+<div>
+<% if @student.errors.any? %>
+    <div id="error">
+      <h4 class="content_title"><%= pluralize(@student.errors.count, "Error") %> Prohibited your data from being saved:</h4>
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul><br/><br/>
+    </div>
+  <% end %>
+</div>
+         
+<div>
+	<%= render 'form' %>
+</div>
+
+
+	
+
+</div>
+</div>
+<% else %>
+  <p>Sorry! Registration is not yet open for B..</p>
+<% end %>

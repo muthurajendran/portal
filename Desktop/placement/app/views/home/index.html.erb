@@ -1,0 +1,106 @@
+<% title "Placement Portal" %>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>
+
+
+<!--Start Slider -->
+<div id="slider" class="radius5">
+    <ul id="accordion">
+        <li>
+            <span>
+                <h2>Recruited students</h2>
+                
+            </span>
+            <%= image_tag('featured1.jpg') %></li>
+        </li>
+		 <li>
+                <span>
+                    <h2>Crack the campus volunteers</h2>
+                   
+                </span>
+                <%= image_tag('featured2.jpg') %></li>
+            <li>
+                <span>
+                    <h2>Orientation day volunteers</h2>
+                    
+                </span>
+                <%= image_tag('featured3.jpg') %></li>
+            <li>
+                <span>
+                    <h2>Pride of NMAMIT</h2>
+                </span>
+                <%= image_tag('featured4.jpg') %></li>
+       
+    </ul>
+</div>
+<!--End Slider -->
+
+    
+       
+
+
+
+	<div id="page_content" class="grid_11 alpha">
+		<br/>
+    	<h1 class="content_title">Highlights </h1><br/>
+        
+
+            <% if @dashboards==[] %>
+                 <h3> *****</h3> 
+		           <p class="grid_11 alpha"> Dasboard empty  </p>
+	            
+	        <% else %>
+	          
+	           	<% @dashboards.each do|s| %>
+	              <h3><%= s.dash_head %> </h3>
+                 <p class="grid_11 alpha"> <%= s.board %>    </p>
+               <% end %>
+	        <% end %>
+		
+
+ <!-- begin sidebar -->
+    <!-- begin testimonials widget -->
+    <div id="testimonials">
+    	<h3 class="content_title">Placement News</h3>
+
+
+		        	<div id="slidetestimonial">
+			            <% if @company==[] %>
+			               <p>********** </p>
+			            <% else %>
+		        		<%@company.each do |s|%>
+		              <div>
+		              	<% @student=StudentRegistration.where("company_id= ? && placed= ?",s.id,true)%>
+		                <p class="blockquotte qleft">
+		                	<% if @student.count >0 %>
+		                <h2><%=s.cmp_name%><small><pre> Placed Students: <%=@student.count%></pre></small></h2>
+		                <%else%>
+		                 <h2><%=s.cmp_name%></h2><small>Coming Soon</small><big><prev>     Last Date for Registration  <bold><%=s.reg_date%></bold></small><small>    Interview on  <%=s.interview_date%></big></prev></h2>
+		                 <%end%>
+		                </p>
+		                </div>
+		                <%end%>
+		                 <%end%>
+		             </div>
+
+    	
+
+     </div>
+
+		
+	
+		</div>
+		</div>
+		</div>
+	
+	    
+			<% if @notices==[] %>
+			<div> <h3> <marquee> ********* </marquee> </h3> </div>
+			<% else %>
+            <div><h2><marquee><%=@notices.last.nhead %> <%= @notices.last.nbody  %></marquee></h2> </div>
+            <% end %>
+	
+

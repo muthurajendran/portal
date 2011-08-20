@@ -1,0 +1,81 @@
+<% title "MCA Students" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h1 class="content_title">MCA Student Details</h1>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %> 
+
+<div>
+<p align = "right"><%= link_to("Add New MCA Student", {:action=>'new'}) %></p>
+<%= form_tag({:controller => 'excel',:action => 'mca_student_excel'}) do %>
+  			<div>
+  				<table border = "1">
+  				<tr>
+    				<th><%= label_tag "file name"  %></th>
+    				<td><%= text_field_tag :filename %></td>
+    			</tr>
+    			</table>
+  			</div>
+			<div class = "actions" >
+  			<br/><%= submit_tag("Generate SpreadSheet", :class => "button medium radius5") %><br/><br/><br/><br/>
+  			</div>
+		<%end%>
+
+
+  
+  <table border='1'>
+    <tr>
+      <th>Actions</th>
+      <th>Student Name</th>
+       <th>Register Number</th>
+      <th>Sem</th>
+      <th>Branch</th>
+      <th>Academic Year</th>
+      <th>SSLC</th>
+      <th>PUC</th>
+      <th>Diploma</th>
+       <th>Degree percentage</th>
+      <th>Gap in education</th>
+      <th>Cgpa</th>
+      <th>Active Backlog</th>
+      <th>Mobile</th> 
+      <th>Email</th>
+    
+    
+    </tr>
+    <% @mca_students.each do |mca_student| %>
+    <tr>
+
+      <td>
+        <%= link_to("Show", {:action => 'show', :id => mca_student.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action=>'edit' ,:id=> mca_student.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action=>'delete', :id=> mca_student.id}, :class => 'action delete') %>
+      </td>
+    <td><%= mca_student.name %></td>
+   
+    <td><%= mca_student.reg_no %></td>
+    <td><%= mca_student.sem %></td>
+    <td><%= PgBranch.find_by_id(mca_student.pg_branch_id).branch_name %></td>
+    
+    <td><%= mca_student.academic_year1 %>--<%= mca_student.academic_year2 %></td>
+    <td><%= mca_student.sslc %></td>
+    <td><%= mca_student.puc %></td>
+    <td><%= mca_student.diploma %></td>
+    <td><%= mca_student.degree %></td>
+   	<td><%= mca_student.gap_in_edu %></td>    
+    <td><%= mca_student.mca_cgpa %></td>
+
+    <td><%= mca_student.active_backlog %></td>
+    <td><%= mca_student.mobile%></td>
+   <td><%= mca_student.email %></td>
+     </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+</div>
+

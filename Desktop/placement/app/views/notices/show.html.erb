@@ -1,0 +1,34 @@
+
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title"> <%=@notice.nhead %></h3>
+
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>        	
+  <table border='border'>
+    <tr>
+      <th> Header:</th>
+      <td><%= @notice.nhead %></td>
+    </tr>
+    
+    <tr>
+    	<th>Notice</th>
+    	<td><%= @notice.nbody%></td>
+    <tr>
+      <th>Created At:</th>
+      <td><%= @notice.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated At:</th>
+      <td><%=@notice.updated_at %></td>
+    </tr>
+  </table>
+<br/>
+<p align="right"><%= link_to("Back", {:action => 'index'}) %>&nbsp;&nbsp;&nbsp;<%= link_to("Edit", {:action => 'edit', :id=>@notice.id }) %></p>
+
+</div>
+</div> 

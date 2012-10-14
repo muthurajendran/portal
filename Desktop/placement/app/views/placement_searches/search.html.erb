@@ -1,9 +1,0 @@
-<h2>Results</h2>
-<% if @searchflag==1 %>
-<% @searchquery.all.each  do |q|  %>
-   <%= q.name %><%=q.reg_no%> <br/>
-   <%end%>
-<%else%>
-   <%= "Nothing Found" %>   
-<%end%>
-

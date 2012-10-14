@@ -1,0 +1,109 @@
+<% title "Company Search" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">Search by Company and other fields</h3>
+        	
+<div>
+	<p align = "left"><a class="tipfade"  original-title = "Required"> *</a></th> Required</p>        	
+</div>         	
+        	
+      <% if !flash[:notice].blank? %>
+	  <div>
+		<p align = "center"><%= flash[:notice] %></p><br/><br/>
+		</div>
+	  <% end %>
+
+<div>	  
+	<%= form_tag({:action => 'result3'}) do %>
+</div>
+<table border = "1">
+		   <%if $select!=2%>
+	<tr>
+		
+		<th><%= label_tag "Branches" %><a class="tipfade"  original-title = "Required">  *</a></th>
+		<%if $select==0 %>
+		<td><% for branch in Branch.find(:all) %> <%= check_box_tag "branch_id[]",branch.id %>  <%= branch.branch_name %><%end%></td>
+		<%elsif $select==1%>
+		 <td><% for branch in PgBranch.find(:all) %> <%= check_box_tag "branch_id[]",branch.id %>  <%= branch.branch_name %><%end%></td>
+		 <%end%>
+	</tr>
+   <%end%>
+       <tr>
+                <th><%= label_tag "Academic Year" %></th>
+                <td><%= select_tag(:academic_year1,options_for_select(2011..Time.now.year+5), :include_blank => false) %>--<%= select_tag(:academic_year2,options_for_select(2012..Time.now.year+5), :include_blank => false) %> </td>
+</tr>
+	<tr>
+  		<th><%= label_tag "DOB (>=)" %></th>
+  		<td><%= select_date nil, :prefix => :dob,  :order => [:day, :month, :year],  :include_blank => true %></td>
+	</tr>
+	<tr>
+  		<th><%= label_tag "SSLC >=" %></th>
+  		<td><%= text_field_tag :sslc %></td> 	
+	</tr>
+	<tr>
+  		<th><%= label_tag "PUC >=" %></th>
+  		<td><%= text_field_tag :puc %></td>	
+	</tr>
+	<tr>
+  		<th><%= label_tag "Diploma >=" %></th>
+  		<td><%= text_field_tag :diploma %></td>	
+	</tr>
+	<tr>
+  		<th><%= label_tag "CGPA >=" %></th>
+  		<td><%= text_field_tag :cgpa %></td>	
+	</tr>
+                <%if $select==2 %>
+            <tr>
+  		<th><%= label_tag "DEGREE >=" %></th>
+  		<td><%= text_field_tag :degree %></td>
+            </tr>
+        <%elsif $select==1%>
+                <tr>
+  		<th><%= label_tag "Per BE >=" %></th>
+  		<td><%= text_field_tag :beper %></td>
+                </tr>
+               <tr>
+  		<th><%= label_tag "BE CGPA >=" %></th>
+  		<td><%= text_field_tag :becgpa %></td>
+              </tr>
+                 
+  	<<%end%>
+	<tr>
+  		<th><%= label_tag "Gap In Education " %></th>
+  		<td><%= select_tag(:gap_in_edu,options_for_select(0..10), :include_blank => true) %></td>	
+	</tr>
+	<tr>
+  		<th><%= label_tag "Max Active Backlogs " %></th>
+  		<td><%= select_tag(:active_backlogs,options_for_select(0..10), :include_blank => true) %></td>	
+	</tr>
+	<tr>
+  		<th><%= label_tag "Salary >=" %></th>
+  		<td><%= text_field_tag :salary %></td>	
+	</tr>
+	<tr>
+  		<th><%= label_tag "Registration Date Before or on (>=)" %></th>
+  		<td><%= select_date nil, :prefix => :reg_date,  :order => [:day, :month, :year],  :include_blank => true %></td>
+	</tr>
+	<tr>
+  		<th><%= label_tag "Test Date Before or On (>=)" %></th>
+ 		<td><%= select_date nil, :prefix => :test_date,  :order => [:day, :month, :year],  :include_blank => true %></td>
+	</tr>
+	<tr>
+  		<th><%= label_tag "Interview Date Before or on (>=)" %></th>
+ 		<td><%= select_date nil, :prefix => :int_date,  :order => [:day, :month, :year],  :include_blank => true %></td>
+  	</tr>
+  	<tr>
+		<th><%= label_tag "Type of Company" %></th>
+		<td><%= select_tag(:company_type, options_for_select(["ALL","CORE", "SERVICE"])) %></td>	
+	</tr>
+</table><br/>
+	<div class = "actions" >
+  		<p align = "right"><%= submit_tag("Search", :class => "button medium radius5") %></p>
+  	</div>
+<%end%>
+ 	<div>
+    	<p align="left"><%= link_to("Click to go Back", {:action => 'index', :controller => 'admin'}) %><br/></p>
+    </div>
+</div>
+</div>

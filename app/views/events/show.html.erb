@@ -1,0 +1,24 @@
+
+
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>      
+
+<% status = POpen4::popen4( "ps -f -p #{@x}") do |stdout, stderr, stdin| %>  	
+  <table border='border'>
+    <tr>
+      <th>Description:</th>
+<%  stdout.each do |line| %>
+      <td><%= line %></td>
+<% end %>
+    
+    
+  </table>
+<% end %>
+<br/>
+<p align="right"><%= link_to("Back", {:action => 'index'}) %>&nbsp;&nbsp;&nbsp;</p>
+
+</div>
+</div> 

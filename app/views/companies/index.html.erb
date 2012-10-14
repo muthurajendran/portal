@@ -1,0 +1,127 @@
+<% title "Company List" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h1 class="content_title">Company Details</h1>
+<% if !flash[:notice].blank? %>
+<div>
+<%= flash[:notice] %>
+</div>
+<% end %>
+
+
+<%= form_tag({:controller => 'excel',:action => 'company_excel'}) do %>
+  			<div>
+  				<table border = "1">
+  				<tr>
+    				<th><%= label_tag "file name"  %></th>
+    				<td><%= text_field_tag :filename %></td>
+    			</tr>
+    			</table>
+  			</div>
+			<div class = "actions" >
+  			<br/><%= submit_tag("Generate SpreadSheet", :class => "button medium radius5") %><br/><br/><br/><br/>
+  			</div>
+		<%end%>
+<div>
+<div>
+	<p align = "right"><%= link_to("Add new Company", {:action=>'new'}) %></p>
+</div>	
+<table border="1">
+  <tr>
+  	<th>Actions</th>
+    <th>Company Name</th>
+    <th>Academic year</th>
+    <th>Eligible BE Branches</th>
+  
+    <th>Sslc</th>
+    <th>Puc</th>
+    <th>Diploma</th>
+    <th>Maximum Backlogs Allowed</th>
+   
+    <th>Cgpa</th>
+    <th>Gap in Education</th>
+    <th>Salary(P.A)</th>
+    <th>Registration date</th>
+    <th>Preplacement talk</th>
+    <th>Interview date</th>
+    <th>Test Date</th>
+    <th>Company type</th>
+  
+  </tr>
+
+<% @companies.each do |company| %>
+  <tr>
+  	<td> <%= link_to("Show", {:action => 'show', :id => company.id}, :class => 'action show' ) %>
+      <%= link_to("Edit", {:action=>'edit' ,:id=> company.id}, :class => 'action edit') %>
+     <%= link_to("Delete", {:action=>'delete', :id=> company.id}, :class => 'action delete') %></td>
+    <td><%= company.cmp_name %></td>
+   <td><%= company.academic_year1 %>--<%= company.academic_year2 %></td>
+    <td>
+     <% company.branches.each do |branch| %>
+     <%= branch.branch_name %> <%end%>
+    </td>
+    
+    <% if company.sslc == 0 %>
+	<td>Not Applicable</td>
+    <%else%>
+    	<td><%= company.sslc %></td>
+    <%end%>
+
+    <% if company.puc == 0 %>
+        <td>Not Applicable</td>
+    <%else%>
+        <td><%= company.puc %></td>
+    <%end%>
+
+    <% if company.diploma == 0 %>
+        <td>Not Applicable</td>
+    <%else%>
+        <td><%= company.diploma %></td>
+    <%end%>
+
+    <% if company.backlogs == 100 %>
+        <td>Not Applicable</td>
+    <%else%>
+        <td><%= company.backlogs %></td>
+    <%end%>
+   
+    <td><%= company.cgpa %></td>
+
+    <% if company.gap_in_edu == -1%>
+    	<td>Not Applicable </td>
+    <%else%>
+    	<td><%= company.gap_in_edu %></td>
+    <%end%>
+
+    <td><%= company.salary %></td>
+    <% if company.reg_date.to_s == '1980-01-01'%>
+    	<td>Not Decided</td>
+    <%else%>    
+    	<td><%= company.reg_date %></td>
+    <%end%>
+    <% if company.preplacement_talk.to_s == '1980-01-01' %>
+    	<td>Not Decided</td>
+    <%else%>
+    	<td><%= company.preplacement_talk %></td>
+    <%end%>
+    <% if company.test_date.to_s == '1980-01-01' %>
+    	<td>Not Decided</td>
+    <%else%>
+    	<td><%= company.test_date %></td>
+    <%end%>
+    <% if company.interview_date.to_s == '1980-01-01' %>
+    	<td>Not Decided</td>
+    <%else%>
+    	<td><%= company.interview_date %></td>
+    <%end%>
+    
+    <td><%= company.company_type %></td>
+   </tr>
+	<% end %>
+</table>
+</div>
+</div>
+
+</div>
+

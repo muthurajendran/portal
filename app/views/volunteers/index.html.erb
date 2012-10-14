@@ -1,0 +1,52 @@
+<% title "Volunteers List" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h1 class="content_title">Volunteer Details</h1>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>   
+
+<div>
+
+<p align = "right"><%= link_to("Add new Volunteer", {:action=>'new'}) %></p>
+  
+  <table border='border'>
+    <tr>
+     
+      <th>Name</th>
+      <th>Event Name</th>
+      <th>Usn</th>
+	  <th>Sem</th>
+	  <th>Branch</th>
+	  <th>Contact Number</th>
+	  <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    
+    <% @volunteers.each do |volunteer| %>
+    <tr>
+	
+     <td><%= volunteer.v_name %></td>
+     <td>
+     <% volunteer.events.each do |event| %>
+     <%= event.event_name %> <%end%>
+    </td>
+      <td><%= volunteer.v_usn %></td>
+      <td><%= volunteer.v_sem %></td>
+      <td><%= volunteer.v_branch %></td>
+      <td><%= volunteer.v_mob %></td>
+      <td><%= volunteer.v_email %></td>
+      <td>
+        <%= link_to("Show", {:action => 'show', :id => volunteer.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action=>'edit' ,:id=> volunteer.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action=>'delete', :id=> volunteer.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+</div>

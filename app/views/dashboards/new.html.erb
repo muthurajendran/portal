@@ -1,0 +1,46 @@
+<% title "New DashBoard" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">Add New Dashboard</h3>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %> 
+
+<div>
+<% if @dashboard.errors.any? %>
+    <div id="error">
+      <h4 class="content_title"><%= pluralize(@dashboard.errors.count, "Error") %> Prohibited this branch from being saved:</h4>
+      <ul>
+      <% @dashboard.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul><br/><br/>
+    </div>
+  <% end %>
+</div>
+   
+<div>
+<%= form_for(:dashboard, :url => {:action => 'create'}) do |f| %>
+</div>  
+    <table>
+      <tr>
+        <th>Dash Head</th>
+        <td><%= f.text_field(:dash_head) %></td>
+      </tr>
+      <tr>
+      		<th>Dash Board</th>
+      		<td><%= f.text_area(:board)%></td>
+     </tr>
+    </table>
+    
+    <div>
+      <br/><p align = "right"><%= submit_tag("Create", :class => "button medium radius5") %></p>
+      <p align="left"><%= link_to("Click to go Back", {:action => 'index'}) %></p>
+    </div>
+    
+ <% end %>
+</div>
+</div>

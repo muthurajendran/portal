@@ -1,0 +1,33 @@
+<% title "Login" %>
+<% if permitted_to? :home_admin,@user=User.new %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">Create Placement/Admin Accounts</h3>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %> 
+
+<div>
+<% if @user.errors.any? %>
+    <div id="error">
+      <h4 class="content_title"><%= pluralize(@user.errors.count, "Error") %> Prohibited your data from being saved:</h4>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul><br/><br/>
+    </div>
+  <% end %>
+</div>
+
+<%= render 'form' %>
+ 
+</div>
+</div>
+<% else %>
+   <h2> INVALID URL </h2>
+   <%= link_to("Back to home page",{:controller=>'home',:action  => 'index'}) %>
+<% end %>

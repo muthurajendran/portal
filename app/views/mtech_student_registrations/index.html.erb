@@ -1,0 +1,110 @@
+<% title "Mtech List" %>
+<div id="user_nav">
+	<%= link_to ">>View my profile",{:controller=>'mtech_students',:action=>'show',:id=>@mtech_student.id} %>
+</div>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">Registration Details</h3>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>
+<h4><font color="red"><b> Note:Select any one out of Tcs and Infosys.Those who select both will not be considered for either of
+the companies </b></font></h4>
+
+ <table border="2">
+ <tr>
+ 	
+   <th>PgCompany Name</th>
+   <th>Registration date</th>
+   <th>Preplacement talk</th>
+   <th>Test Date</th>
+   <th>Interview date</th>
+	<th colspan="2">Actions / Status</th>
+ 	<th>Placed?</th>
+<th>Placed Students List</th>
+   
+ </tr>
+ 
+ <% @pg_companies.each do |pg_company| %>
+    <%@eligible=MtechStudentRegistration.find_by_mtech_student_id_and_pg_company_id(@mtech_student.id,pg_company.id)%>
+  
+   <tr>
+   <td> <%= pg_company.cmp_name %> </td>
+   
+   <td> <%= pg_company.reg_date %> </td>
+   <% if pg_company.preplacement_talk.to_s == '1910-01-01' %>
+   		<td>Not Applicable</td>
+   <%else%>
+   		<td> <%= pg_company.preplacement_talk %> </td>
+   <%end%>
+   
+   <% if pg_company.interview_date.to_s == '1910-01-01' %>
+   		<td>Not Applicable</td>
+   <%else%>
+   		<td> <%= pg_company.interview_date %> </td>
+   <%end%>
+   
+   <% if pg_company.test_date.to_s == '1910-01-01' %>
+   		<td>Not Applicable</td>
+   <%else%>
+   		<td> <%= pg_company.test_date %> </td>
+   <%end%>
+
+   <td> <%= link_to'Show Criterion',:action => 'display_criterion',:id => pg_company.id %> </td>
+   
+     <!-- if a student has not Registered Yet -->
+   <% if @eligible.nil? %>
+   
+   		<!-- if a student has been placed in a service based company so he/she can't register for any more service type company  -->
+   		<% if @mtech_student.placed? && @mtech_student.placed_company_type  == 1 && PgCompany.find_by_id(pg_company.id).pg_company_type == "SERVICE"  %>
+   			<td>Not Eligible</td>
+   		
+   		<!-- if a student has been placed in a service based company but wants to register for a core type company and has the required cgpa -->			
+   		<%elsif @mtech_student.placed? && @mtech_student.placed_company_type == 1 && @mtech_student.mtech_cgpa >= PgBranch.find_by_id(@mtech_student.pg_branch_id).dream_option && PgCompany.find_by_id(pg_company.id).pg_company_type == "CORE" %>
+			<td><%= link_to 'Register Now',:action=>'register' ,:id=>pg_company.id %></td>
+		<!-- if a student has been placed in a service based company but wants to register for a core type company and has less than the required cgpa -->
+		<%elsif @mtech_student.placed? && @mtech_student.placed_company_type == 1 && @mtech_student.mtech_cgpa < PgBranch.find_by_id(@mtech_student.pg_branch_id).dream_option && PgCompany.find_by_id(pg_company.id).pg_company_type == "CORE" %>
+			<td>Not Eligible</td>			
+		<!-- if a student has been placed in a core company, so he can't register for any other core type company -->
+		<%elsif @mtech_student.placed? && @mtech_student.placed_company_type == 2 %>
+			<td>Not Eligible</td>
+		<!-- if a student has not been placed but wants to register -->		
+		<%else%>
+			<td><%= link_to 'Register Now',:action=>'register' ,:id=>pg_company.id %></td>
+   		<%end%>
+	
+		<!-- if a student has already registered for some company -->
+   <% else %>
+     	<!-- if a student has been placed in a service based company so he can't see the other service based company register options -->
+     	<% if @mtech_student.placed? && @mtech_student.placed_company_type == 1 && PgCompany.find_by_id(pg_company.id).pg_company_type == "SERVICE"  %>
+     		<td>Not Eligible</td>
+     	<!-- if a student has been placed in a core based company he cant see the registration details of any other company -->
+     	<% elsif @mtech_student.placed? && @mtech_student.placed_company_type == 2 %>
+     		<td>Not Eligible</td>
+     	<!-- if a student has been placed in a service based company company and he wants to register for core based company but don't have the required cgpa -->
+     	<%elsif @mtech_student.placed? && @mtech_student.placed_company_type == 1 && @mtech_student.mtech_cgpa < PgBranch.find_by_id(@mtech_student.pg_branch_id).dream_option && PgCompany.find_by_id(pg_company.id).pg_company_type == "CORE" %>
+			<td>Not eligible</td>     		
+		<!-- if a student has been placed in a service based company company and he wants to register for core based company and has the required cgpa -->	
+     	<%elsif @mtech_student.placed? && @mtech_student.placed_company_type == 1 && @mtech_student.mtech_cgpa >=PgBranch.find_by_id(@mtech_student.pg_branch_id).dream_option && PgCompany.find_by_id(pg_company.id).pg_company_type == "CORE" %>		
+<td><%= label_tag 'registered'%> </td>
+     	<!-- if a student has not been placed yet -->
+     	<%else%>
+     		<td><%= link_to 'Unregister Now',:action=>'unregister' ,:id=>pg_company.id %> </td>
+     	<%end%>
+    <%end%>
+ 
+  
+   <% if !@eligible.nil? && @eligible.placed? %>
+   		<td>Placed </td>
+   	<%else%>
+   		<td>Not Placed</td>
+   	<%end%>
+    <td><%= link_to "Show_Placed" , :action => 'show_others', :id  => pg_company.id %></td>
+   </tr>
+<% end %>
+</table>
+</div>
+</div>

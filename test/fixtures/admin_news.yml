@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dash_head: MyString
+  dashboard: MyString
+
+two:
+  dash_head: MyString
+  dashboard: MyString

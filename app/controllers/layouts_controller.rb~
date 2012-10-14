@@ -1,0 +1,4 @@
+class LayoutsController < ApplicationController
+def application
+@g1= 
+end

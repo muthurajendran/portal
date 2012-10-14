@@ -1,0 +1,45 @@
+<% title "Change Attribute" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">Change <%= @user_session.username %> details</h3>
+        	
+        	
+<div>
+  <% if @user_session.errors.any? %>
+    <div id="error">
+      <h4 class="content_title"><%= pluralize(@user_session.errors.count, "error") %> prohibited this user from being saved:</h4>
+
+      <ul>
+      <% @user_session.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul><br/><br/>
+    </div>
+  <% end %>
+</div>
+
+<%= form_for(@user_session) do |f| %>
+
+<table border = "1">
+	
+  <tr>
+    <th><%= f.label :username %></th>
+ 	<td><%= f.text_field :username %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :password %></th>
+    <td><%= f.password_field :password %></td>
+  </tr>
+</table>
+  <div>
+      <br/><p align="right" ><%= submit_tag("Login") %></p>
+      
+    </div>
+<% end %>
+
+<div>
+    	<p align="right"><%= link_to 'Back', user_sessions_path %>  <%= link_to 'Show', @user_session %><br/><br/></p>
+    </div>
+</div>
+</div>

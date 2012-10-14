@@ -1,0 +1,107 @@
+<% title "Branch Student Search" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">Search by Branch and other fields</h3>
+        	
+<div>
+	<p align = "left"><a class="tipfade"  original-title = "Required"> *</a></th> Required</p>        	
+</div>         	
+
+        	
+      <% if !flash[:notice].blank? %>
+	  <div>
+		<p align = "center"><%= flash[:notice] %></p><br/>
+		</div>
+	  <% end %>
+	  
+<div>	  
+	<%= form_tag({:action => 'result2',:c=>$select}) do %>
+</div>
+
+<div>
+<table border = "1">
+<% if $select!=2 %>
+	<tr>
+		<th><%= label_tag "Branches" %><a class="tipfade"  original-title = "Required">  *</a></th>
+		
+		<td><% if $select==0 %>
+		  <% for branch in Branch.find(:all) %>
+     	  <%= check_box_tag "branch_id[]",branch.id%> <%= branch.branch_name %> <%end%></td>
+     	  <% elsif $select==1 %>
+		  <% for branch in PgBranch.find(:all) %>
+     	  <%= check_box_tag "branch_id[]",branch.id%> <%= branch.branch_name %> <%end%></td>
+     	  <%end%> </td> 
+	</tr>
+<%end%>
+	<tr>
+		<th><%= label_tag "Date of Birth From" %></th>
+		<td><%= select_year(1980,:start_year  => 1970,:end_year  => 2010, :include_blank=>true) %></td>	
+	</tr>
+	<tr>
+  		<th><%= label_tag "SSLC >=" %></th>
+  		<td><%= text_field_tag :sslc %></td> 	
+	</tr>
+	<tr>
+  		<th><%= label_tag "PUC >=" %></th>
+  		<td><%= text_field_tag :puc %></td>	
+	</tr>
+	<tr>
+  		<th><%= label_tag "DIPLOMA >=" %></th>
+  		<td><%= text_field_tag :diploma %></td>	
+	</tr>
+	<tr>
+  		<th><%= label_tag "GAP IN EDUCATION <=" %></th>
+  		<td><%= select_tag(:gap,options_for_select(0..10), :include_blank=>true ) %></td>	
+	</tr>	
+	<tr>
+  		<th><%= label_tag "CGPA >=" %></th>
+  		<td><%= text_field_tag :cgpa %></td>
+  	</tr>
+        <%if $select==2 %>
+            <tr>
+  		<th><%= label_tag "DEGREE >=" %></th>
+  		<td><%= text_field_tag :degree %></td>
+            </tr>
+        <%elsif $select==1%>
+                <tr>
+  		<th><%= label_tag "Per BE >=" %></th>
+  		<td><%= text_field_tag :beper %></td>
+                </tr>
+               <tr>
+  		<th><%= label_tag "BE CGPA >=" %></th>
+  		<td><%= text_field_tag :becgpa %></td>
+              </tr>
+                 
+  	<<%end%>
+         	
+  	<tr>
+  		<th><%= label_tag "Active Backlogs <=" %></th>
+  		<td><%= select_tag(:active_backlogs,options_for_select(0..10), :include_blank=>true) %></td>	
+	</tr>
+	<tr>
+  		<th><%= label_tag "Total Backlogs <=" %></th>
+  		<td><%= select_tag(:total_backlogs,options_for_select(0..30), :include_blank=>true) %></td>	
+	</tr>
+	
+	<tr>
+		<th><%= label_tag "Academic Year" %></th>
+		<td><%= select_tag(:Academic_Year1,options_for_select(2011..Time.now.year+5), :include_blank => false) %> - <%= select_tag(:Academic_Year2,options_for_select(2012..Time.now.year+5), :include_blank => false) %></td>
+	</tr>
+         <%if $select ==0%>
+	<tr>
+		<th><%= label_tag "Gender" %></th>
+		<td><%= select_tag(:gender, options_for_select(["ALL","MALE", "FEMALE"])) %></td>	
+	</tr>
+<%end%>
+</table><br/>
+<div class = "actions" ><br/>
+  		<p align = "right"><%= submit_tag("Search", :class => "button medium radius5") %></p>
+  	</div>
+<%end%>
+<div>
+    	<p align="left"><%= link_to("Click to go Back", {:action => 'index', :controller => 'admin'}) %><br/></p>
+    </div>
+</div>
+</div>
+</div>

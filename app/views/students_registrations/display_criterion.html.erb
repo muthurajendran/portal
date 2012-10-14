@@ -1,0 +1,133 @@
+<% title "#{@company.cmp_name}" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title"><%= @company.cmp_name %></h3>
+
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %> 
+<div>
+<table border="1">
+<tr>
+  <th>Cmp name:</th>
+     <td><%= @company.cmp_name %></td>
+</tr>
+
+<tr>
+  <th>Date of Birth</th>
+  <% if @company.dob.to_s == '1980-01-01' %>
+       <td>Not Applicable</td>
+     <%else%>
+     <td><%= @company.dob %></td>
+      <%end%>
+</tr>
+<tr>
+  <th>Sslc:</th>
+    <% if @company.sslc == 0 %>
+	<td>Not Applicable</td>
+    <%else%>
+     	<td><%= @company.sslc %></td>
+     <%end%>
+</tr>
+
+<tr>
+  <th>Puc:</th>
+    <% if @company.puc == 0 %>
+	<td>Not Applicable</td> 
+    <%else%>
+     	<td><%= @company.puc %></td>
+    <%end%>
+</tr>
+<tr>
+  <th>Diploma</th>
+    <% if @company.diploma == 0 %>
+	<td>Not Applicable</td>
+    <%else%>
+     	<td><%= @company.diploma %></td>
+    <%end%>
+</tr>
+
+<tr>
+  <th>Maximum Gap in Education:</th>
+  <% if @company.gap_in_edu == -1 %>
+  	<td>Not Applicable</td>
+  <%else%>
+     <td><%= @company.gap_in_edu%></td>
+  <%end%>
+</tr>
+
+<tr>
+	<th>Maximum Active Backlogs Allowed</td>
+        <%if @company.backlogs == 100 %>
+		<td>Not Applicable</td>
+	<%else%>
+		<td><%= @company.backlogs %></td>
+	<%end%>
+
+</tr>
+<tr>
+  <th>Minimum Cgpa:</th>
+     <td><%= @company.cgpa %></td>
+</tr>
+
+<tr>
+  <th>Registration date:</th>
+  <td><%= @company.reg_date %></td>
+    
+</tr>
+
+<tr>
+  <th>Preplacement talk:</th>
+  <% if @company.preplacement_talk.to_s == '1980-01-01' %>
+       <td>Not Decided</td>
+     <%else%>
+     <td><%= @company.preplacement_talk %></td>
+      <%end%>
+     
+</tr>
+
+<tr>
+  <th>Test Date:</th>
+     <% if @company.test_date.to_s == '1980-01-01' %>
+       <td>Not Decided</td>
+     <%else%>
+     <td><%= @company.test_date %></td>
+      <%end%>
+</tr>
+
+<tr>
+  <th>Interview date:</th>
+       <% if @company.interview_date.to_s == '1980-01-01' %>
+       <td>Not Decided</td>
+     <%else%>
+     <td><%= @company.interview_date %></td>
+      <%end%>
+</tr>
+
+<tr>
+  <th>Salary(P.A)</th>
+     <td><%= @company.salary %></td>
+</tr>
+
+<tr>
+  <th>Company Type:</th>
+      <td><%= @company.company_type %></td>
+</tr>
+
+<tr>
+  <th>Extra Requirements:</th>
+  <td><%= @company.extra_req %></td>
+</tr>
+
+<tr>
+  <th>Miscellaneous:</th>
+  <td><%= @company.misc %></td>
+</tr>
+</table>
+</div>
+<p align = "right"><%= link_to 'Back',{:action=> 'index'} %>
+</div>
+</div>

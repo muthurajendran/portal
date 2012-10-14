@@ -1,0 +1,44 @@
+<% title "Settings" %>
+<% if permitted_to? :home_admin,@user=User.new %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>   
+
+<div>
+
+
+  
+  <table border='border'>
+    <tr>
+     
+      <th>Settings</th>
+      <th>Value</th>
+      <th>Actions</th>
+    </tr>
+    
+   
+    <tr>
+	
+     <td><%= @setting.fields %></td>
+     <td><%= @setting.value %></td>
+      <td>
+        
+        <%= link_to("Edit", {:action=>'edit' ,:id=> @setting.id}, :class => 'action edit') %>
+       
+      </td>
+    </tr>
+   
+  </table>
+</div>
+</div>
+</div>
+<% else %>
+   <h2> you are not allowed to access this page </h2>
+   <%= link_to("Back to home page",{:controller=>'home',:action  => 'index'}) %>
+<% end %>

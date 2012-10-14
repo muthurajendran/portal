@@ -1,0 +1,45 @@
+<% title "Placed Student" %>
+<div>
+	<h3 class="content_title">Placed Students List for <%=@cmp.cmp_name %> at &nbsp; <%=Time.now.strftime(" %X")%>,&nbsp;<%=Time.now.strftime(" %d")%><%=Time.now.strftime(" %B")%></h3>
+
+		<%  if @no_registrations == true %>
+			<p align = "center">No Registrations for This Company</p>
+		<%else%>
+			<% if !@placed_students.nil? %>
+				<% @cmp.pg_branches.each do |branch| %>
+					<br/>
+     				<h3 align = "right"><%=branch.branch_name%></h3><hr/>
+     				<div>
+     				 <table border="1">
+     				 
+		                <tr>
+		                	<th>USN</th>
+		                	<th>Name</th>
+		                	
+		                 </tr>
+		                  <% @placed_students.each do |stud| %>
+		                  		<% if stud.pg_branch_id == pg_branch.id %>	
+		                 <tr>
+		                	
+		                 		<td><%=stud.reg_no%></td>
+		                 		<td><%=stud.name%></td>
+		                 
+		                 </tr>
+		                 	<%end%>
+		                 <%end%>
+					</table>
+					</div>	
+				<%end%>
+			<%else%>
+				<p align = "center">None Placed</p>
+			<%end%>
+		<%end%>
+	
+<br/>
+<div>
+	<h5>Total Number of Students Placed are <%=@placed_students.count %></h5>
+</div>
+<div>
+	<p align="right"><%= link_to("Back", {:action => 'index'}) %>
+</div>
+</div>

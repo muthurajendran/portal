@@ -1,0 +1,38 @@
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h1 class="content_title">Notice Details</h1>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>   
+
+<div>
+
+<p align = "right"><%= link_to("Add new Notice", {:action=>'new'}) %></p>
+  
+  <table border='border'>
+    <tr>
+     
+      <th> Header</th>
+       <th>Notice</th>
+      <th>Actions</th>
+    </tr>
+    
+    <% @notices.each do |notice| %>
+    <tr>
+	
+     <td><%= notice.nhead %></td>
+      <td><%= notice.nbody %></td>
+      <td>
+        <%= link_to("Show", {:action => 'show', :id => notice.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action=>'edit' ,:id=> notice.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action=>'delete', :id=> notice.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+</div>

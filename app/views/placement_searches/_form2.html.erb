@@ -1,0 +1,49 @@
+ <tr>
+ 	<td><%= link_to("Show Details", {:action => 'show', :id => student.id}, :class => 'action show') %></td>
+  	<td><%= student.name %></td>
+    <td><%= student.dob %></td>
+    <td><%= student.reg_no %></td>
+    <td><%= student.sem %></td>
+<%if @c1 ==0 %>
+ <td><%=  Branch.find_by_id(student.branch_id).branch_name %></td>
+
+<%elsif @c1 ==1 %>
+ <td><%=  PgBranch.find_by_id(student.pg_branch_id).branch_name %></td>
+<%else%>
+ <td>MCA</td>
+
+ <%end%>
+
+    <td><%= student.sslc %></td>
+    <td><%= student.puc %></td>
+    <td><%= student.diploma %></td>
+    <td><%= student.gap_in_edu %></td>
+   <% if @c1==0%>
+        <td><%= student.cgpa %></td>
+   <%elsif @c1 ==1 %>
+      <td><%= student.mtech_cgpa %></td>
+   <%else%>
+      <td><%= student.mca_cgpa %></td>
+   <%end%>
+
+
+
+
+    <td><%= student.active_backlog %></td>
+   
+    <td><%= student.mobile%></td>
+    <td><%= student.email %></td>
+    <%if $select==1%>
+
+         <td><%= student.mtech_be_per %></td>
+         <td><%= student.mtech_be_cgpa %></td>
+    <%elsif $select==2%>
+        <td><%= student.degree %></td>
+    <%end%>
+
+    <%if f1 ==1%>
+   <td><%= link_to 'Unregister Now',:action=>'unregister',:student =>student.id,:com => com.id,:c => @c1 %> </td>
+    <%end%>
+
+
+</tr>

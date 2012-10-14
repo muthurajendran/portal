@@ -1,0 +1,84 @@
+	<div id="page_content" class="grid_11 alpha">
+    	<h1 class="content_title">About us</h1>
+
+    	<p class="grid_11 alpha dropcap2">The department of Counselling, Student welfare, Training & Placement is vibrant in its activities and sees an NMAMITian as a cheerful, articulate, healthy team player who is technically competent, socially & environmentally conscious, ethically upright and eminently employable.</p>
+        <div class="whitespace clear"></div>
+
+		
+        <div class="grid_8 omega">
+        	 <h3>Ms Shalini K Sharma</h3>
+        	 <h4>Proffessor & Head,Dept of Counselling,Welfare,Training & Placements</h4>
+           
+            
+        </div>
+	
+<div class="whitespace clear"></div>
+		
+        <div class="grid_8 omega">
+        	<h3> Mr Bharath G Kumar</h3>
+        <h4>Executive- Placements</h4>
+            
+        </div>
+		<div class="whitespace clear"></div>
+        
+		<div class="grid_8 omega">
+        	<h3> Mrs Shobha Moily </h3>
+<h4>Placement Staff </h4>
+<h3> Mrs Prathibha V Kadamba </h3>
+<h4>Placement Staff </h4>
+<h3> Mr Subhash Chandra Shetty </h3>
+<h4>Placement Staff </h4>
+            
+        </div>
+		<div class="whitespace clear"></div>
+		
+		
+	        <div class="grid_8 omega">
+	        	<h3>Mr Vinay S </h3>
+                <h4> Dept of ISE, NMAMIT  </h4>
+  <h4> Site Developer Guide  </h4>
+	        </div>
+			<div class="whitespace clear"></div>
+			<div class="grid_8 omega">
+	        	<h3>Mr Rajeevan </h3>
+                <h4> Dept of CSE, NMAMIT  </h4>
+<h4> Site Developer Host </h4>
+	        </div>
+			<div class="whitespace clear"></div>
+	        <div class="grid_11 omega">
+	            <h2><u>Development Team</u></h2><br/>
+	            <h3>Ashwini Jain </h3>
+	            <h5>CSE  7th SEM</h5>
+	            <h3>Ishan Alok </h3>
+	            <h5>CSE  7th SEM</h5>
+		    <h3>Mithun Holla  </h3>
+		    <h5>CSE  7th SEM</h5>
+		    <h3> Muthu Rajendran  </h3>
+		    <h5>CSE  7th SEM</h5>
+		    <h3>  Rachna Hegde </h3>
+		    <h5>CSE  7th SEM</h5>
+		    <h3> Ranjith  </h3>
+		    <h5>CSE  7th SEM</h5>
+		    <h3> Srinivas Prabhu  </h3>
+		    <h5>CSE  7th SEM</h5><br/><br/>
+		 
+ 		    <div class="grid_8 omega">
+  	                  <h3>Mr Vinay S </h3>
+        	          <h4>Project Guide  </h4>
+                    </div>
+                    <div class="whitespace clear"></div>
+                        <div class="grid_8 omega">
+                        <h3>Mr Rajeevan </h3>
+               		 <h4>Project Guide  </h4>
+<h4> Site Developer Host </h4>
+                </div>
+
+				
+	        </div>
+			<div class="whitespace clear"></div>
+       
+        <div class="clear"></div>
+        <div class="top"><%= link_to 'top',{:controller=>'home',:action=>'about_us'} %></div>
+		<div class="whitespace"></div>                               
+    </div>
+    <!-- end main content area -->

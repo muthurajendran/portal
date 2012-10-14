@@ -1,0 +1,52 @@
+<% if permitted_to? :home_admin,@user=User.new %>
+<% title "Edit Setting-  #{@setting.fields}" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	
+
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>  
+
+<div>
+<% if @setting.errors.any? %>
+    <div id="error">
+      <h4 class="content_title"><%= pluralize(@setting.errors.count, "Error") %> Prohibited this branch from being saved:</h4>
+      <ul>
+      <% @setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul><br/><br/>
+    </div>
+  <% end %>
+</div> 
+<div>
+  	<%= form_for(:setting, :url => {:action => 'update', :id=> @setting.id }) do |f| %>
+ </div> 
+    <table>
+      <tr>
+        <th>Registration </th>
+      
+      	<td><%= f.select :value,['true', 'false'] %></td>
+     </tr>
+    </table><br/>
+    
+    <div class = "actions">
+    	<br/>
+      	<p align = "right"><%= submit_tag("Update", :class => "button medium radius5") %></p>
+    </div>
+    
+    <div>
+    	<p align="left"><%= link_to("Click to go Back", {:action => 'index'}) %><br/><br/></p>
+    </div>
+    
+  <% end %>
+</div>
+</div>
+<% else %>
+   <h2> you are not allowed to access this page </h2>
+   <%= link_to("Back to home page",{:controller=>'home',:action  => 'index'}) %>
+<% end %>

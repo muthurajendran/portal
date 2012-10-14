@@ -1,0 +1,46 @@
+<% title "Placed Students" %>
+<h3 class="content_title">Placed Students for <%=@branch.branch_name %> at &nbsp; <%=Time.now.strftime(" %X")%>,&nbsp;<%=Time.now.strftime(" %d")%><%=Time.now.strftime(" %B")%></h3>
+
+	<%if @company_list.blank? || @company_list.nil?%>	
+		<p align = "center"><bold>No Companies are coming for <%= @branch.branch_name%> Yet. Check out later.</bold> </p>
+	<%else%>
+	
+	<% @company_list.each do |company|%>
+		<% c = 0%>
+		<% count = 0 %>	
+		<h3 align = "left"><%=company.cmp_name%></h3><hr/><br/><br/>
+		
+		<% company.mtech_students.each do |student|%>
+		   	<% if MtechStudentRegistration.find_by_mtech_student_id_and_pg_company_id(student.id,company.id).placed? && student.branch_id == @branch.id && (student.academic_year1 == @year1 &&  student.academic_year2 == @year2) %>
+	         	<% count +=1 %>
+	       <%end%>
+	   <%end%>
+	   
+	   <%if count ==0 %>      	 
+			<p align = "center">No Student Placed in <%= company.cmp_name%> yet.</p>
+		<%else%>		
+ 			<div>
+			
+			<table border = "1">
+				<tr>
+					<th>Registration Number</th>
+					<th>Student's Name</th>
+				</tr>
+				<% company.mtech_students.each do |reg_students| %>
+					<% if MtechStudentRegistration.find_by_mtech_student_id_and_pg_company_id(reg_students.id,company.id).placed? && reg_students.branch_id ==@branch.id  && (reg_students.academic_year1 == @year1 &&  reg_students.academic_year2 == @year2) %>	
+						<% c+=1 %>
+		
+						<tr>
+							<td><%= reg_students.reg_no %></td>
+							<td><%= reg_students.name %></td>
+						</tr>
+					
+					<%end%>
+			<%end%><br/>
+				
+			</table><br/>
+				<h5 align ="left">Total Number of Students Placed in <%=company.cmp_name%> is <%= c %></h5>
+			</div>
+		<%end%>
+	<%end%>	
+<%end%>

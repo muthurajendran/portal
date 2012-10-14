@@ -1,0 +1,29 @@
+ <tr>
+ 	<th>Action</th>
+    <th>Name</th>
+    <th>Dob</th>
+    <th>Reg no</th>
+    <th>Sem</th>
+    
+    <th>Branch</th>
+    
+    <th>Sslc</th>
+    <th>12th/PUC</th>
+    <th>Diploma</th>
+    <th>Gap in edu</th>
+    
+    <th>Cgpa</th>
+    <th>Active backlog</th>
+    
+    <th>Mobile</th>
+    <th>Email</th>
+    <%if $select==1%>
+    <th>BE percentage</th>
+    <th>BE CGPA</th>
+      <%elsif $select==2%>
+      <th>Degree</th>
+   <%end%>
+
+	<th colspan="2">Actions / Status</th>
+
+  </tr>

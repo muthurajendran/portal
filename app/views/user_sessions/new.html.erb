@@ -1,0 +1,20 @@
+<% title "Login" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">Login</h3>
+        	
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %> 
+      	
+        	
+<%= render 'form' %>
+
+
+ <h4><%= link_to("Forgot Password?", {:controller=>"home", :action => 'password'}, :class => 'action show') %></h4>
+</div>
+</div>
+

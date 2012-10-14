@@ -1,0 +1,171 @@
+<% title "  #{@student.name}" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title"><%= @student.name %></h3>
+        	
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>         	
+
+
+<table border="1">
+<tr>
+  <th>Name:</th>
+     <td><%= @student.name %></td>
+</tr>
+
+<tr>
+  <th>Date of Birth:</th>
+     <td><%= @student.dob %></td>
+</tr>
+
+<tr>
+	<th>Gender:</th>
+	<td><%= @student.gender %></td>
+</tr>
+
+<tr>
+  <th>Register Number:</th>
+     <td><%= @student.reg_no %></td>
+</tr>
+
+<tr>
+  <th>Sem:</th>
+  <td><%= @student.sem%></td>
+</tr>
+
+<tr>
+  <th>Branch:</th>
+  <td><%= Branch.find_by_id(@student.branch_id).branch_name %></td>
+</tr>
+
+
+<tr>
+  <th>Academic Year1:</th>
+     <td><%= @student.academic_year1 %></td>
+</tr>
+
+<tr>
+  <th>Academic Year2:</th>
+     <td><%= @student.academic_year2%></td>
+</tr>
+
+
+<tr>
+  <th>SSLC:</th>
+        <td><%= @student.sslc %></td>
+</tr>
+
+
+<tr>
+  <th>PUC:</th>
+  <% if @student.puc == 0 %>
+  		<td>Not Applicable</td>
+  <% else %>
+      <td><%= @student.puc %></td>
+  <%end%>
+</tr>
+
+<tr>
+  <th>Diploma:</th>
+  <% if @student.diploma == 0%>
+  		<td>Not Applicable</td>
+  <%else%>
+  		<td><%= @student.diploma%></td>
+  <% end %>
+</tr>
+
+<tr>
+  <th>Gap in Education:</th>
+  <td><%= @student.gap_in_edu %></td>
+</tr>
+<tr>
+  <th>Sem 1 Sgpa:</th>
+  <td><%= @student.sgpa_sem1 %></td>
+</tr>
+<tr>
+  <th>Sem 2 Sgpa:</th>
+  <td><%= @student.sgpa_sem2 %></td>
+</tr>
+<tr>
+  <th>Sem 3 Sgpa:</th>
+  <td><%= @student.sgpa_sem3 %></td>
+</tr>
+<tr>
+  <th>Sem 4 Sgpa:</th>
+  <td><%= @student.sgpa_sem4 %></td>
+</tr>
+<tr>
+  <th>Sem 5 Sgpa:</th>
+  <td><%= @student.sgpa_sem5 %></td>
+</tr>
+<tr>
+  <th>Sem 6 Sgpa:</th>
+  <td><%= @student.sgpa_sem6 %></td>
+</tr>
+<tr>
+  <th>Sem 7 Sgpa:</th>
+  <%if @student.sgpa_sem7 == 0 %>
+  		<td>Not Applicable</td>
+  <%else%>
+  		<td><%= @student.sgpa_sem7 %></td>
+  <%end%>
+</tr>
+<tr>
+  <th>Sem 8 Sgpa:</th>
+  <%if @student.sgpa_sem8 == 0 %>
+  		<td>Not Applicable</td>
+  <%else%>
+  		<td><%= @student.sgpa_sem8 %></td>
+  <%end%>
+</tr>
+<tr>
+  <th>Cgpa:</th>
+  <td><%= @student.cgpa %></td>
+</tr>
+<tr>
+  <th>Active Backlog:</th>
+  <td><%= @student.active_backlog %></td>
+</tr>
+<tr>
+  <th>Total Backlog:</th>
+  <td><%= @student.total_backlogs %></td>
+</tr>
+<tr>
+  <th>Telephone</th>
+  <td><%= @student.telephone %></td>
+</tr>
+<tr>
+  <th>Mobile:</th>
+  <td><%= @student.mobile %></td>
+</tr>
+<tr>
+  <th>Email:</th>
+  <td><%= @student.email %></td>
+</tr>
+<tr>
+  <th>Address:</th>
+  <td><%= @student.address %></td>
+</tr>
+
+
+</table>
+<br/>
+<% if permitted_to? :home_admin,@user=User.new %>
+<div>
+<p align = "right"><%= link_to 'Back',{:action=> 'index'} %>&nbsp;&nbsp;&nbsp;<%= link_to 'Edit Student',{:action=> 'edit',:id=> @student.id}  %> </p>
+</div>
+<% end %>
+<% if @value==true %>
+<% if permitted_to? :home_student,@user= User.new %>
+		<p align = "right"><%= link_to 'Edit Information',{:action=> 'edit',:id=> @student.id}  %></p> 
+<% end %>
+<% else %>
+     	<p align="center">Editing information is disabled! For any changes contact placement office.</p>
+<% end %>
+
+</div>
+</div>

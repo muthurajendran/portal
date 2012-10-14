@@ -1,0 +1,39 @@
+<% title "My Dashboard" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h2 class="content_title">Dash Board Details</h2>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>   
+
+<div>
+
+<p align = "right"><%= link_to("Add new DashBoard", {:action=>'new'}) %></p>
+  
+  <table border='1'>
+    <tr>
+     
+      <th> Header</th>
+       <th>Dash Board</th>
+      <th>Actions</th>
+    </tr>
+    
+    <% @dashboards.each do |dashboard| %>
+    <tr>
+	
+     <td><%= dashboard.dash_head %></td>
+      <td><%= dashboard.board %></td>
+      <td>
+        <%= link_to("Show", {:action => 'show', :id => dashboard.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action=>'edit' ,:id=> dashboard.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action=>'delete', :id=> dashboard.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+</div>

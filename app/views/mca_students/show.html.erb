@@ -1,0 +1,149 @@
+<% title "#{@mca_student.name}" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title"><%= @mca_student.reg_no %></h3>
+        	
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>         	
+
+
+<table border="2">
+<tr>
+  <th>Name:</th>
+     <td><%= @mca_student.name %></td>
+</tr>
+
+<tr>
+  <th>Date of Birth:</th>
+     <td><%= @mca_student.dob %></td>
+</tr>
+
+<tr>
+  <th>Register Number:</th>
+     <td><%= @mca_student.reg_no %></td>
+</tr>
+
+<tr>
+  <th>Sem:</th>
+     <td><%= @mca_student.sem%></td>
+</tr>
+
+<tr>
+  <th>Branch:</th>s
+  <td><%= PgBranch.find_by_id(@mca_student.pg_branch_id).branch_name %></td>
+</tr>
+
+
+<tr>
+  <th>Academic Year1:</th>
+     <td><%= @mca_student.academic_year1 %></td>
+</tr>
+
+<tr>
+  <th>Academic Year2:</th>
+     <td><%= @mca_student.academic_year2%></td>
+</tr>
+
+<tr>
+  <th>SSLC:</th>
+     <td><%= @mca_student.sslc %></td>
+</tr>
+
+<tr>
+  <th>PUC:</th>
+      <td><%= @mca_student.puc %></td>
+</tr>
+
+<tr>
+  <th>Diploma:</th>
+  <td><%= @mca_student.diploma%></td>
+</tr>
+<tr>
+  <th>Degree percentage:</th>
+  <td><%= @mca_student.degree%></td>
+</tr>
+
+<tr>
+  <th>Gap in Education:</th>
+  <td><%= @mca_student.gap_in_edu %></td>
+</tr>
+<tr>
+  <th>Sem 1 Sgpa:</th>
+  <td><%= @mca_student.sgpa_sem1 %></td>
+</tr>
+<tr>
+  <th>Sem 2 Sgpa:</th>
+  <td><%= @mca_student.sgpa_sem2 %></td>
+</tr>
+<tr>
+  <th>Sem 3 Sgpa:</th>
+  <td><%= @mca_student.sgpa_sem3 %></td>
+</tr>
+<tr>
+  <th>Sem 4 Sgpa:</th>
+  <td><%= @mca_student.sgpa_sem4 %></td>
+</tr>
+<tr>
+  <th>Sem 5 Sgpa:</th>
+  <td><%= @mca_student.sgpa_sem5 %></td>
+</tr>
+<tr>
+  <th>Sem 6 Sgpa:</th>
+  <td><%= @mca_student.sgpa_sem6 %></td>
+</tr>
+
+<tr>
+  <th>Cgpa:</th>
+  <td><%= @mca_student.mca_cgpa %></td>
+</tr>
+<tr>
+  <th>Active Backlog:</th>
+  <td><%= @mca_student.active_backlog %></td>
+</tr>
+<tr>
+  <th>Total Backlog:</th>
+  <td><%= @mca_student.total_backlogs %></td>
+</tr>
+<tr>
+  <th>Telephone</th>
+  <td><%= @mca_student.telephone %></td>
+</tr>
+<tr>
+  <th>Mobile:</th>
+  <td><%= @mca_student.mobile %></td>
+</tr>
+<tr>
+  <th>Email:</th>
+  <td><%= @mca_student.email %></td>
+</tr>
+<tr>
+  <th>Address:</th>
+  <td><%= @mca_student.address %></td>
+</tr>
+
+</table>
+<br/>
+<% if permitted_to? :home_admin,@user=User.new %>
+<div>
+<p align = "right"><%= link_to 'Back',{:action=> 'index'} %>&nbsp;&nbsp;&nbsp;<%= link_to 'Edit Student',{:action=> 'edit',:id=> @mca_student.id}  %> </p>
+</div>
+<% end %>
+<% if @value==true %>
+<% if permitted_to? :home_mca,@user= User.new %>
+<!-- if Time.now-@mca_student.created_at<=700000 -->
+<p align = "right"><%= link_to 'Edit Information',{:action=> 'edit',:id=> @mca_student.id}  %></p> 
+<!-- else -->
+<!-- p --> <!-- The time given to change your information is over! for any changes contact placement office. --> <!-- p -->
+	<!-- end -->
+<% end %>
+<% else %>
+     	<p align="center">Editing information is disabled! For any changes contact placement office.</p>
+<% end %>
+
+
+</div>
+</div>

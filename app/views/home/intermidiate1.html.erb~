@@ -1,0 +1,18 @@
+<h4>Choose the academic year</h4>
+
+<div>
+        <%= form_tag({:action => 'graph_branch_company'}) do %>
+</div>
+<table border = "1">
+
+        <tr>
+                <th><%= label_tag "Academic Year" %></th>
+                <td><%= select_tag(:academic_year1,options_for_select(2011..Time.now.year+5), :include_blank => false) %>--<%= select_tag(:academic_year2,options_for_select(2011..Time.now.year+5), :include_blank => false) %> </td>
+                
+</tr>
+</table><br/>
+        <div class = "actions" >
+                <p align = "right"><%= submit_tag("Search", :class => "button medium radius5") %></p>
+        </div>
+<%end%>
+

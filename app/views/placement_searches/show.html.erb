@@ -1,0 +1,158 @@
+<% title "#{@student.name}"%>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title"><%= @student.name %></h3>
+        	
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>         	
+
+
+<table border="2">
+<tr>
+  <th>Name:</th>
+     <td><%= @student.name %></td>
+</tr>
+
+<tr>
+  <th>Date of Birth:</th>
+     <td><%= @student.dob %></td>
+</tr>
+
+<tr>
+  <th>Register Number:</th>
+     <td><%= @student.reg_no %></td>
+</tr>
+
+<tr>
+  <th>Sem:</th>
+     <td><%= @student.sem%></td>
+</tr>
+
+<tr>
+  <th>Branch:</th>
+<%if $select ==0 %>
+ <td><%=  Branch.find_by_id(@student.branch_id).branch_name %></td>
+
+<%elsif $select ==1 %>
+ <td><%=  PgBranch.find_by_id(@student.pg_branch_id).branch_name %></td>
+<%else%>
+ <td>MCA</td>
+</tr>
+
+
+<tr>
+  <th>Academic Year1:</th>
+     <td><%= @student.academic_year1 %></td>
+</tr>
+
+<tr>
+  <th>Academic Year2:</th>
+     <td><%= @student.academic_year2%></td>
+</tr>
+
+<tr>
+  <th>SSLC:</th>
+     <td><%= @student.sslc %></td>
+</tr>
+
+<tr>
+  <th>PUC:</th>
+      <td><%= @student.puc %></td>
+</tr>
+
+<tr>
+  <th>Diploma:</th>
+  <td><%= @student.diploma%></td>
+</tr>
+
+<tr>
+  <th>Gap in Education:</th>
+  <td><%= @student.gap_in_edu %></td>
+</tr>
+<tr>
+  <th>Sem 2 Sgpa:</th>
+  <td><%= @student.sgpa_sem1 %></td>
+</tr>
+<tr>
+  <th>Sem 2 Sgpa:</th>
+  <td><%= @student.sgpa_sem2 %></td>
+</tr>
+<tr>
+  <th>Sem 3 Sgpa:</th>
+  <td><%= @student.sgpa_sem3 %></td>
+</tr>
+<tr>
+  <th>Sem 4 Sgpa:</th>
+  <td><%= @student.sgpa_sem4 %></td>
+</tr>
+<if $select==0 || $select==2 %>
+<tr>
+  <th>Sem 5 Sgpa:</th>
+
+  <td><%= @student.sgpa_sem5 %></td>
+</tr>
+<tr>
+  <th>Sem 6 Sgpa:</th>
+  <td><%= @student.sgpa_sem6 %></td>
+</tr>
+<%end%>
+<%if $select==0%>
+<tr>
+  <th>Sem 7 Sgpa:</th>
+  
+  <td><%= @student.sgpa_sem7 %></td>
+</tr>
+<tr>
+  <th>Sem 8 Sgpa:</th>
+  <td><%= @student.sgpa_sem8 %></td>
+</tr>
+<tr>
+<%end%>
+ <tr>
+  <th>Cgpa:</th>
+   <% if $select==0%>
+        <td><%= @student.cgpa %></td>
+   <%elsif $select ==1 %>
+      <td><%= @student.mtech_cgpa %></td>
+   <%else%>
+      <td><%= @student.mca_cgpa %></td>
+   <%end%>
+
+</tr>
+<tr>
+  <th>Active Backlog:</th>
+  <td><%= @student.active_backlog %></td>
+</tr>
+<tr>
+  <th>Total Backlog:</th>
+  <td><%= @student.total_backlogs %></td>
+</tr>
+<tr>
+  <th>Telephone</th>
+  <td><%= @student.telephone %></td>
+</tr>
+<tr>
+  <th>Mobile:</th>
+  <td><%= @student.mobile %></td>
+</tr>
+<tr>
+  <th>Email:</th>
+  <td><%= @student.email %></td>
+</tr>
+<tr>
+  <th>Address:</th>
+  <td><%= @student.address %></td>
+</tr>
+
+</table>
+<br/>
+<div>
+<p align = "right"><%= link_to 'Back',{:action=> 'index'} %>&nbsp;&nbsp;&nbsp;</p> 
+</div>
+
+</div>
+</div>

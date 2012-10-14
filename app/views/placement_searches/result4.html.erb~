@@ -1,0 +1,47 @@
+<% title " Search Result" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title"> Search Result</h3>
+        	
+<% if !flash[:notice].blank? %>
+<div>
+	<%= flash[:notice] %>
+</div>
+<% end %>
+
+
+
+
+
+<% if @student.empty?%>
+	<p align = "center"><b>No record Found</b></p>
+<%else%>
+
+<%= form_tag({:controller=>'excel',:action => 'res4_excel',:ew=>@c1}) do %>
+  			<div>
+  				<table border = "1">
+  				<tr>
+    				<th><%= label_tag "file name"  %></th>
+    				<td><%= text_field_tag :filename %></td>
+    			</tr>
+    			</table>
+  			</div>
+			<div class = "actions" >
+  			<br/><%= submit_tag("Generate SpreadSheet", :class => "button medium radius5") %><br/><br/><br/><br/>
+  			</div>
+		<%end%>
+		<div>		
+		  <table border="1">
+		   		<%= render(:partial => "form1",:locals => {:f1=>@f5}) %>
+        		<% @student.each do |student| %>
+						<%= render(:partial => "form2", :locals => {:student => student,:com=>@company,:f1=>@f5}) %>
+				<%end%>    
+		</table><br/></div>
+<%end%>
+<div>
+    	<p align="right"><%= link_to("Click to go Back", {:action => 'registration'}) %><br/></p>
+    </div>
+</div>
+</div>
+

@@ -1,0 +1,154 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face{ font-family:'Terminal Dosis Light'; font-style:normal; font-weight:normal; src: local('Terminal Dosis Light'), local('TerminalDosis-Light'), url('../fonts/TerminalDosis-Light.ttf') format('woff'); }
+@font-face{
+	font-family:'Allerta';
+    src: url('../fonts/allerta-medium-webfont.eot');
+    src: url('../fonts/allerta-medium-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/allerta-medium-webfont.woff') format('woff'),
+         url('../fonts/allerta-medium-webfont.ttf') format('truetype'),
+         url('../fonts/allerta-medium-webfont.svg#AllertaMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;	
+}
+@font-face{
+    font-family: 'Lobster';
+    src: url('../fonts/Lobster_1.3-webfont.eot');
+    src: url('../fonts/Lobster_1.3-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lobster_1.3-webfont.woff') format('woff'),
+         url('../fonts/Lobster_1.3-webfont.ttf') format('truetype'),
+         url('../fonts/Lobster_1.3-webfont.svg#Lobster13Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Droid Serif';
+    src: url('../fonts/DroidSerif-Regular-webfont.eot');
+    src: url('../fonts/DroidSerif-Regular-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/DroidSerif-Regular-webfont.woff') format('woff'),
+         url('../fonts/DroidSerif-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/DroidSerif-Regular-webfont.svg#DroidSerifRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Droid Sans';
+    src: url('../fonts/DroidSans-webfont.eot');
+    src: url('../fonts/DroidSans-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/DroidSans-webfont.woff') format('woff'),
+         url('../fonts/DroidSans-webfont.ttf') format('truetype'),
+         url('../fonts/DroidSans-webfont.svg#DroidSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Cuprum';
+    src: url('../fonts/Cuprum-webfont.eot');
+    src: url('../fonts/Cuprum-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Cuprum-webfont.woff') format('woff'),
+         url('../fonts/Cuprum-webfont.ttf') format('truetype'),
+         url('../fonts/Cuprum-webfont.svg#CuprumFFURegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('../fonts/JosefinSansStd-Light-webfont.eot');
+    src: url('../fonts/JosefinSansStd-Light-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/JosefinSansStd-Light-webfont.woff') format('woff'),
+         url('../fonts/JosefinSansStd-Light-webfont.ttf') format('truetype'),
+         url('../fonts/JosefinSansStd-Light-webfont.svg#JosefinSansStdLight') format('svg');
+    font-weight: 400; font-style: normal;
+}
+@font-face {
+    font-family: 'Quattrocento';
+    src: url('../fonts/Quattrocento-Regular-webfont.eot');
+    src: url('../fonts/Quattrocento-Regular-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Quattrocento-Regular-webfont.woff') format('woff'),
+         url('../fonts/Quattrocento-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Quattrocento-Regular-webfont.svg#QuattrocentoRomanRegular') format('svg');
+    font-weight: normal; font-style: normal;
+}
+@font-face {
+    font-family: 'Michroma';
+    src: url('../fonts/Michroma-webfont.eot');
+    src: url('../fonts/Michroma-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Michroma-webfont.woff') format('woff'),
+         url('../fonts/Michroma-webfont.ttf') format('truetype'),
+         url('../fonts/Michroma-webfont.svg#MichromaRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Yanone Kaffeesatz';
+    src: url('../fonts/YanoneKaffeesatz-Regular-webfont.eot');
+    src: url('../fonts/YanoneKaffeesatz-Regular-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/YanoneKaffeesatz-Regular-webfont.woff') format('woff'),
+         url('../fonts/YanoneKaffeesatz-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/YanoneKaffeesatz-Regular-webfont.svg#YanoneKaffeesatzRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Crimson Text';
+    src: url('../fonts/Crimson-Roman-webfont.eot');
+    src: url('../fonts/Crimson-Roman-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Crimson-Roman-webfont.woff') format('woff'),
+         url('../fonts/Crimson-Roman-webfont.ttf') format('truetype'),
+         url('../fonts/Crimson-Roman-webfont.svg#CrimsonRoman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cantarell';
+    src: url('../fonts/Cantarell-Regular-webfont.eot');
+    src: url('../fonts/Cantarell-Regular-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Cantarell-Regular-webfont.woff') format('woff'),
+         url('../fonts/Cantarell-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Cantarell-Regular-webfont.svg#CantarellRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu-Regular-webfont.eot');
+    src: url('../fonts/Ubuntu-Regular-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Ubuntu-Regular-webfont.woff') format('woff'),
+         url('../fonts/Ubuntu-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Ubuntu-Regular-webfont.svg#UbuntuRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Neuton';
+    src: url('../fonts/Neuton-webfont.eot');
+    src: url('../fonts/Neuton-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Neuton-webfont.woff') format('woff'),
+         url('../fonts/Neuton-webfont.ttf') format('truetype'),
+         url('../fonts/Neuton-webfont.svg#NeutonRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('../fonts/EBGaramond-webfont.eot');
+    src: url('../fonts/EBGaramond-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/EBGaramond-webfont.woff') format('woff'),
+         url('../fonts/EBGaramond-webfont.ttf') format('truetype'),
+         url('../fonts/EBGaramond-webfont.svg#EBGaramondRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ChunkFive';
+    src: url('../fonts/Chunkfive-webfont.eot');
+    src: url('../fonts/Chunkfive-webfontd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Chunkfive-webfont.woff') format('woff'),
+         url('../fonts/Chunkfive-webfont.ttf') format('truetype'),
+         url('../fonts/Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

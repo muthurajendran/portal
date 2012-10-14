@@ -1,0 +1,30 @@
+<% if @s.question_set==false %>
+<h4> It looks like you've not set any security question for your account. Please contact Placement office. Can't move forward!
+<% else %>
+
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>
+
+<div>	  
+	<%= form_tag({:action => 'check_security', :html => {:autocomplete => "off"},:id=> @user.id,:name=>@user.username, :value=>@s.answer}) do %>
+</div>
+<h3>Security Question: <%= @s.question %> </h3>
+
+<table border = "1">
+	
+	<tr>  
+    	<th><%= label_tag "Answer" %><a class="tipfade"  original-title = "Required">  *</a></th>
+    	<td><%= text_field_tag :answer, nil, :options => {:autocomplete=>"off"} %></td>
+ 	</tr>
+  	
+</table><br/>
+	<div class = "actions" >
+  		<p align = "right"><%= submit_tag("Submit", :class => "button medium radius5") %></p>
+  	</div>
+<%end%>
+
+   <%= link_to("Back to home page",{:controller=>'home',:action  => 'index'}) %>
+<% end %>

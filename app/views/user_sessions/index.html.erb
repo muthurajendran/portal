@@ -1,0 +1,29 @@
+<% title "User List" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h1 class="content_title">User Sessions</h1>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %> 
+
+<div>
+	<table border =  "1">
+  	<tr>
+    	<th>Username</th>
+    	<th>Password</th>
+    	<th colspan = "3">Action</th>
+  	</tr>
+	<% @user_sessions.each do |user_session| %>
+  	<tr>
+    	<td><%= user_session.username %></td>
+    	<td><%= user_session.password %></td>
+    	<td><%= link_to 'Show', user_session %>&nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_user_session_path(user_session) %>&nbsp;&nbsp;&nbsp;<%= link_to 'Destroy', user_session, :confirm => 'Are you sure?', :method => :delete %></td>
+  	</tr>
+<% end %>
+</table><br/>
+</div>
+</div>
+</div>

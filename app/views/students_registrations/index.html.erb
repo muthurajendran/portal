@@ -1,0 +1,80 @@
+<% title "Company List" %>
+<div id="user_nav">
+	<%= link_to ">>View my profile",{:controller=>'students',:action=>'show',:id=>@student.id} %>
+</div>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h3 class="content_title">Registration Details</h3>
+        	
+<% if !flash[:notice].blank? %>
+<div>
+<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>
+<h4><font color="red"><b> Note:Please be careful while Registering.Once you register then unregistering is not possible </b></font></h4>
+<% if @companies!=[] %>
+ <table border="2">
+ <tr>
+ 	
+   <th>Company Name</th>
+   <th>Registration date</th>
+   <th>Preplacement talk</th>
+   <th>Test Date</th>
+   <th>Interview date</th>
+	<th colspan="2">Actions / Status</th>
+ 	<th>Placed?</th>
+ 	<th>Placed Students List</th>
+   
+ </tr>
+ 
+ <% @companies.each do |company| %>
+    <% @eligible=StudentRegistration.find_by_student_id_and_company_id(@student.id,company.id) %>
+  
+   <tr>
+   <td> <%= company.cmp_name %> </td>
+   <td> <%= company.reg_date %> </td>
+   <% if company.preplacement_talk.to_s == '1980-01-01' %>
+   		<td>Not Decided</td>
+   <%else%>
+   		<td> <%= company.preplacement_talk %> </td>
+   	<%end%>
+	<%if company.test_date.to_s == '1980-01-01' %>
+    		<td>Not Decided</td>
+    <%else%>
+   			<td> <%= company.test_date %> </td>
+   	<%end%>
+   	<%if company.interview_date.to_s == '1980-01-01'%>
+   		<td>Not Decided</td>
+   	<%else%>
+   		<td ><%= company.interview_date %> </td>
+   	<%end%>
+
+   <td> <%= link_to'Show Criterion',:action => 'display_criterion',:id=>company.id %> </td>
+   
+   
+   <!-- if a student has not Registered Yet -->
+   <% if @eligible.nil? %>
+   
+   		<td><%= link_to 'Register Now',:confirm => 'Are you sure?',:action=>'register' ,:id=>company.id %></td>
+		
+		<!-- if a student has already registered for some company -->
+		
+   <% else %>
+    	
+     			<td><%= link_to 'Unregister Now',:action=>'unregister' ,:id=>company.id %> </td>
+         <%end%>
+   <% if !@eligible.nil? && @eligible.placed? %>
+   		<td>Placed </td>
+   	<%else%>
+   		<td>Not Placed</td>
+   	<%end%>
+   	<td><%= link_to "Show_Placed" , :action => 'show_others', :id  => company.id %></td>
+   </tr>
+<% end %>
+</table>
+<% else %>
+   <p>Sorry! There are no Companies available for registration<p>
+<% end %>
+</div>
+</div>

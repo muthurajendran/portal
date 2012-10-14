@@ -1,0 +1,45 @@
+<% title "Event Details" %>
+<div id="content" class="container_16">
+    	<!-- begin main content area -->
+        <div id="page_content" class="grid_11 alpha">
+        	<h1 class="content_title">Event Details</h1>
+<% if !flash[:notice].blank? %>
+<div>
+	<p align = "center"><%= flash[:notice] %></p>
+</div>
+<% end %>   
+
+<div>
+
+<p align = "right"><%= link_to("Add new Event", {:action=>'new'}) %></p>
+  
+  <table border='border'>
+    <tr>
+     
+      <th>mem   cpu</th>
+      
+    </tr>
+
+	
+	    
+	    
+    
+    <% status = POpen4::popen4( 'ps -eo pid,pmem,pcpu | sort -k 1 -nr| head -10') do |stdout, stderr, stdin| %>
+    <%  stdout.each do |line| %> 
+    <tr>
+	<% x=line.split %>
+	
+    <td><%= x[0] %></td>
+   
+    <td>
+        <%= link_to("Show", {:action => 'show', :id => x[0].to_i}, :class => 'action show') %>
+        <%= link_to("Edit", {:action=>'edit' ,:id=> line.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action=>'delete', :id=> line.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+ <% end %>
+    <% end %>
+  </table>
+</div>
+</div>
+</div>
